@@ -22,6 +22,54 @@
   color: #61dafb;
 }
 
+#main-container {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar-container {
+  /* when i put display: block here I think it's saying it's partaking in BLOCK not that everything in it is going to be in block */
+  color: grey;  /*it's not font-color it's just color */
+  width: 30%;
+  background-color: navy;
+  height: 15%;  
+  position: fixed;
+  padding-left: 30px;
+  padding-top: 15px;
+  min-width: 350px;
+}
+.place-details {
+  margin-top: 102.14px;
+  background-color: darkorange;
+  width: 30%;
+  height: 85%;
+  display: block;  
+  padding-left: 30px;
+  min-width: 350px;
+}
+.place-details h3 {
+  padding-top: 20px;
+  margin-bottom: 0;
+}
+.place-details p {
+  margin-top: 0;
+}
+
+#filter-selector {
+  border: 1px;
+}
+
+#map-override {
+  position: fixed;
+  right: 0;
+  width: 65%;
+  align-content: center;
+  margin-left: auto;
+  margin-right: 30px;
+}
+/* #map {
+} */
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -30,3 +78,21 @@
     transform: rotate(360deg);
   }
 }
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       #map {
+        height: 100vh;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+/* @media screen and (max-width: 600px) {
+   {      
+   
+  }    
+} */
