@@ -43,9 +43,13 @@
   background-color: darkorange;
   width: 30%;
   height: 85%;
-  display: block;  
+  position: relative;
+  display:  block; 
   padding-left: 30px;
   min-width: 350px;
+}
+.place-details button{
+  display: list-item;
 }
 .place-details h3 {
   padding-top: 20px;

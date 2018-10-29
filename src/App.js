@@ -16,7 +16,8 @@ class App extends Component {
   state = {
     venues: [],
     screen: '',
-    someArray: []
+    someArray: [],
+    //arrayOfInfoWindowsData: [],  hypothetical
   }
 
   componentDidMount() {
@@ -24,12 +25,8 @@ class App extends Component {
     this.getVenues('restaurants');
   }
 
-
-
-
-
-
-  // this gets passed into the Filters.js component// PROBABLY will discard this in favor of querying from the Venues state
+  // this gets passed into the Filters.js component
+  // PROBABLY will discard this in favor of querying from the Venues state
   // updateFilter = (criteria) => {// we can't use this because this is just performing another search.  we need to use ALLTHERESTAURANTS that we got and filter those results, not run another query
   //   let temp = criteria;
   //   if (criteria === 'All') { this.setState({filter: 'restaurants'})}
@@ -53,21 +50,22 @@ class App extends Component {
       // .then(()=>{this.renderMap()})
     }
   }
+ 
 
     // i think to do the click the listitme to get the map marker to bounch and show its infowindow
    // off the list button. click, function () document.getElementById('the id is set to the venue id number')
   
  //if something == all then set someArray to Venues which goes to places here...
-// else...  some filter is applied to Venues and that creates someArray and then array gets passed in here
-// in any case the someArray gets passed in here.... the work will be done on this page
+  // else...  some filter is applied to Venues and that creates someArray and then array gets passed in here
+  // in any case the someArray gets passed in here.... the work will be done on this page
 
 
   renderMap = () => {
-    loadScript('https://maps.googleapis.com/maps/api/js?key=YOURAPIKEYGOESHERE&callback=initMap')  //Your API key
+    loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDru1pflxGUqPv1S3jBeLcx1yxpXELX6oA&callback=initMap')  //Your API key
     window.initMap = this.initMap
   }
   
-  getVenues = (booboo)=> {
+  getVenues = (booboo)=> {//FOURSQUARE
    //POSSIBLY TRY USING THE FETCH API INSTEAD OF THIS BELOW.... it's suspected that what is here is better because that way I can use the as entries in forms
     const endPoint = 'https://api.foursquare.com/v2/venues/explore?'  //this is the request from the site  
     const parameters = {
@@ -104,8 +102,7 @@ class App extends Component {
     })
   }
 
-
-
+  
   initMap= () => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: 32.855038, lng: -96.796988}, //  coordinates of University Park 
@@ -114,14 +111,15 @@ class App extends Component {
 
 
   //--------------possibly make the below a COMPONENT. 
-  // THE STATE COMPONENT WILL BE THE 'venues'... it will be the state of 'someArray'  gets passed into this and this will be a live thing...
 
-    //set the infowindow outside of the loop so there's only ONE infoWindow const.  This Const is set everytime at the click with setContent
     const infowindow = new window.google.maps.InfoWindow({
      // content: contentString
     });
 
-    this.state.someArray.map(oneVenue => {      
+    //marker clicker to open an InfoWindow over the marker
+  
+
+    this.state.someArray.map(oneVenue => {      //FOURSQUARE and GOOGLE
       const marker = new window.google.maps.Marker({
         position: {lat: oneVenue.venue.location.lat, lng: oneVenue.venue.location.lng},
         map: map,
@@ -130,7 +128,7 @@ class App extends Component {
         animation: window.google.maps.Animation.DROP
       })
     
-      const contentString = '<div id="content">'+
+      const contentString = '<div id="content">'+// FOURSQUARE
         '<div id="siteNotice">'+
         '</div>'+
         '<h3 id="firstHeading" class="firstHeading">' + oneVenue.venue.name + '</h3>' +
@@ -141,25 +139,38 @@ class App extends Component {
         '</div>'+
         '</div>';      
 
-      //marker clicker to open an InfoWindow over the marker
+      // function infoWinInit (thing) {
+      //   infowindow.setContent(contentString);
+      //   infowindow.open(map, thing);
+      //   thing.setAnimation(window.google.maps.Animation.BOUNCE);
+      //   setTimeout(() => {thing.setAnimation(null)},3500);       
+      // }
+
       marker.addListener('click', function() {
         infowindow.setContent(contentString);
         infowindow.open(map, marker);
         marker.setAnimation(window.google.maps.Animation.BOUNCE);
         setTimeout(() => {marker.setAnimation(null)},3500);       
-      });     
+      });  
+
+      // marker.addListener('click', infoWinInit(marker) )
+
     }) 
 
-    //--------  -------------------------------------------------------------------
-
+    //--------------------------------------------------------------------------
+   
 
 
   }//keep this one.. you need it for the initmap
  
 
+
+
   render() {
+  
     return (
-      
+     
+
       <main id='main-container'>
      
         <Filters        
@@ -169,11 +180,16 @@ class App extends Component {
         />
 
         <PlaceDetails
+
 //probably create function on this page and then pass it's application into here
 
 //if something == all then set someArray to Venues which goes to places here...
 // else...  some filter is applied to Venues and that creates someArray and then array gets passed in here
 // in any case the someArray gets passed in here.... the work will be done on this page
+          infowindow= {this.infowindow}
+          map= {this.map}
+          contentString= {this.contentString}
+          
           places= {this.state.someArray}
           screen= {this.state.screen}
         />
@@ -186,6 +202,7 @@ class App extends Component {
     )
   }
 }
+
 
 
 function loadScript(url) {
