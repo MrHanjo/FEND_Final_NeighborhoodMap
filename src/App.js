@@ -61,7 +61,7 @@ class App extends Component {
 
 
   renderMap = () => {
-    loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDru1pflxGUqPv1S3jBeLcx1yxpXELX6oA&callback=initMap')  //Your API key
+    loadScript('https://maps.googleapis.com/maps/api/js?key=YOURAPIKEYHERE&callback=initMap')  //Your API key
     window.initMap = this.initMap
   }
   
