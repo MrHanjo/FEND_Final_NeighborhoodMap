@@ -1,11 +1,11 @@
  import React, { Component } from 'react';
-// //you can write this one up as a function like the lesson was mentioning about
+// you maybe can write this one up as a function like the lesson was mentioning about
 class Filters extends Component {  
    
   render() {
     return(
     
-<div class='sidebar-container'>Filter Your Results Here <br/> 
+        <div class='sidebar-container'>Filter Your Results Here <br/> 
              
           <select 
           id='filter-selector'
@@ -14,7 +14,7 @@ class Filters extends Component {
                 this.props.updateScreen(event.target.value)
                 
             } >
-              <option value="all">All</option>
+              <option value="All">All</option>
               <option value="American Restaurant">American Cuisine</option>
               <option value="Fast Food Restaurant">Fast Food</option>
               <option value="Pizza Place">Pizza</option>
@@ -26,8 +26,9 @@ class Filters extends Component {
 
 
           {JSON.stringify(this.props.screen)}
-              
+        
+                        
         </div>
     )}
-        }
+}
 export default Filters;
