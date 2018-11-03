@@ -51,7 +51,7 @@ class App extends Component {
 
 
   renderMap = () => {
-    loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDru1pflxGUqPv1S3jBeLcx1yxpXELX6oA&callback=initMap')  //Your API key
+    loadScript('https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY-HERE&callback=initMap')  //Your API key
     window.initMap = this.initMap
   }
 
@@ -149,7 +149,7 @@ class App extends Component {
   }
 
 
-  
+
 //----------------------------------------------------------------------------------------------------------------------------
   //FILTERS below is a component that has a drop down to filter the type of restaurant from the "venues" fetch
   //PLACEDETAILS is basically a sidebar of the restaurants in a list that you can click on.
