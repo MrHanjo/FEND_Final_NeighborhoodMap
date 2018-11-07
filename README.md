@@ -1,3 +1,15 @@
+## About 
+This project was for Udacity. 
+
+## Quickstart
+run in GitBash
+npm install
+npm run build
+npm start
+
+## To the Reviewer
+ChromeVox has problems reading off the items in the drop down menu.  Even if they are put in with Aria-Labels.  
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

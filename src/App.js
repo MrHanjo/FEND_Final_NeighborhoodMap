@@ -34,22 +34,14 @@ class App extends Component {
       );
       this.setState({ screen: criteria });
       this.setState({ someArray: venuesScreened},this.renderMap());
-      // this.renderMap();
-      // this.initMap();
     }
   }
 
   renderMap = () => {
-    loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDru1pflxGUqPv1S3jBeLcx1yxpXELX6oA&callback=initMap')  //Your API key goes here
-    window.initMap = this.initMap;
-   // this.initMap();
-        
+    loadScript('https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY=HERE&callback=initMap')  //Your API key goes here
+    window.initMap = this.initMap;    
   }
-  
-  // LS = () => {
-  //   loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDru1pflxGUqPv1S3jBeLcx1yxpXELX6oA&callback=initMap')  //Your API key goes here
-  //   window.initMap = this.initMap
-  // }
+
 
 //--------------------------------------------------------------------------------------------------------------------
   // FOURSQUARE data request
@@ -159,7 +151,6 @@ class App extends Component {
             
             places= {this.state.someArray}
             screen= {this.state.screen}
-            //someArray= {this.state.someArray}
           />
           
           <div id='map-override' tabIndex='-1'> 
