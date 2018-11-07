@@ -8,7 +8,7 @@ npm run build
 npm start
 
 ## To the Reviewer
-ChromeVox has problems reading off the items in the drop down menu.  Even if they are put in with Aria-Labels.  
+ChromeVox has problems reading off the items in the drop down menu.  Even if they are put in with Aria-Labels.  They are entered in correctly as ChromeVox sometimes verbalizes them.  I believe it's somekind of glitch where ChromeVox isn't responding fast enough so it remains silent.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
